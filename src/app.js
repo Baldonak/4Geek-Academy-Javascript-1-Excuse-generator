@@ -20,16 +20,29 @@ window.onload = function() {
     "while I was praying"
   ];
 
-  let array = [who, action, what, when];
   let excuse = [];
 
-  const random_excuse = array => {
-    for (let value of array) {
-      excuse.push(value[Math.floor(Math.random() * (value.length - 1))]);
+  const RandomIndex = arr => Math.floor(Math.random() * (arr.length - 1));
+  const Item = (arr, i) => arr[i];
+  const JoinArrElements = (arr, delimiter) => arr.join(delimiter);
+
+  const randomExcuse = array_of_arrays => {
+    for (let value of array_of_arrays) {
+      let item = Item(value, RandomIndex(value));
+      excuse.push(item);
     }
 
-    return excuse.join(" ");
+    return JoinArrElements(excuse, " ");
   };
+
+  // const array = [1,2,3,4];
+
+  // // calcular un indice aleatorio
+  // const RandomIndex = (arr) => Math.floor(Math.random()*arr.length);
+  // // calcular un valor aleatorio
+  // const RandomItem = (arr, i) => arr[i];
+
+  // console.log(RandomItem(array, RandomIndex(array)))
 
   // const generate_random_excuse = (who, action, what, when) => {
   //   var random_who = who[Math.floor(Math.random() * (who.length - 1))];
@@ -43,5 +56,6 @@ window.onload = function() {
   // };
 
   // console.log(generate_random_excuse(who, action, what, when));
-  console.log(random_excuse(array));
+
+  console.log(randomExcuse([who, action, what, when]));
 };
